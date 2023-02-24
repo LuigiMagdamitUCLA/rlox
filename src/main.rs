@@ -7,6 +7,7 @@ fn main() {
     let mut args: Vec<String> = Vec::new();
     args.push(String::from(""));
 
+    error(2, String::from("message"));
     if args.len() > 1 {
         println!("Usage: rlox [script]");
         process::exit(1);
@@ -32,4 +33,13 @@ fn run_file(path: String) {
 
 fn run(source: String) {
     println!("{}", source);
+}
+
+// error reporting
+fn error(line: u32, message: String) {
+    report(line, String::from(""), message);
+}
+
+fn report(line: u32, location: String, message: String) {
+    eprintln!("[line {}] Error: {} {}", line, location, message);
 }
