@@ -1,0 +1,3 @@
+
+
+If you actually have a vector of bytes (Vec<u8>) and want to convert to a String, the most efficient is to reuse the allocation with String::from_utf8:
